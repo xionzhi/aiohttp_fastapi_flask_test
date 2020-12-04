@@ -1,0 +1,8 @@
+flask: gunicorn flask_app:app
+fastapi: uvloop fastapi_app:app
+aiohttp: python aiohttp_app.py
+
+test: wrk -t8 -c200 -d10s --latency "http://127.0.0.1:8000/ping"
+
+ok! or ab
+
