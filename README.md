@@ -19,6 +19,13 @@ wrk -t8 -c200 -d10s --latency "http://127.0.0.1:8000/ping"
 
 #### 测试结果
 
+|  web   | Request/s  | Latency  |
+|  ----  | ----  | ---- |
+| aiohttp | 1164.27 | 50%  154.53ms |
+| fastapi | 1785.86 | 50%  110.91ms |
+| flask | 150.43 | 50%  843.81ms |
+
+
 ```
 # aiohttp
 Running 10s test @ http://127.0.0.1:8000/ping
@@ -159,7 +166,7 @@ async def ping():
     return dict(uuid=_uuid)
 
 
-# uvloop fastapi:app
+# uvicorn fastapi:app
 # gunicorn -w 1 -k uvicorn.workers.UvicornWorker runserver:app -b 127.0.0.1:8000
 ```
 
